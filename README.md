@@ -1,11 +1,8 @@
-# Project Name
+# JS Hangman
 
-Project Description
-
-## Live Version
-
-This page is not yet deployed.
-<!--This page is currently deployed. [View the live website.]()-->
+## Overview
+* max 10 failed guesses (10th fatal)
+* one player suggests a word, the other player guesses
 
 ## Feedback and Bugs
 
