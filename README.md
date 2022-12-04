@@ -1,8 +1,12 @@
 # JS Hangman
 
 ## Overview
+* single-player & multi-player (1v1)
+* get a random word from api
 * max 10 failed guesses (10th fatal)
-* one player suggests a word, the other player guesses
+
+* 1st player to guess the word wins
+* using node.js, express, socket.io, bootstrap
 
 ## Feedback and Bugs
 
