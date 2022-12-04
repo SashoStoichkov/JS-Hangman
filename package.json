@@ -1,0 +1,19 @@
+{
+  "name": "js-hangman",
+  "version": "1.0.0",
+  "description": "## Overview * single-player & multi-player (1v1) * get a random word from api * max 10 failed guesses (10th fatal)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SashoStoichkov/JS-Hangman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SashoStoichkov/JS-Hangman/issues"
+  },
+  "homepage": "https://github.com/SashoStoichkov/JS-Hangman#readme"
+}
