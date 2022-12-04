@@ -1,5 +1,7 @@
 # JS Hangman
 
+some changes - won't be added to main branch
+
 ## Overview
 * single-player & multi-player (1v1)
 * get a random word from api
