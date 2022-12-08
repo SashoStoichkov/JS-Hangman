@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/SashoStoichkov/JS-Hangman/issues"
   },
-  "homepage": "https://github.com/SashoStoichkov/JS-Hangman#readme"
+  "homepage": "https://github.com/SashoStoichkov/JS-Hangman#readme",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "readline-sync": "^1.4.10"
+  }
 }
