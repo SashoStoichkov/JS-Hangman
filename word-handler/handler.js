@@ -11,7 +11,7 @@ function isGameWon(wordStatus, correctWord) {
 
 function isGameLost() {
     if (playerMistakes === maxWrong) {
-        console.log("You doesn't have more lifes.");
+        console.log("You don't have more lifes.");
         return true;
     }
     return false;

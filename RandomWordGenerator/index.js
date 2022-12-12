@@ -12,6 +12,3 @@ class RandomWordGenerator {
 }
 
 module.exports = RandomWordGenerator;
-
-// const generator = new RandomWordGenerator();
-// generator.getRandomWord().then((word) => console.log(word));

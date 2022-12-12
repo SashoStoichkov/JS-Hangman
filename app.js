@@ -1,6 +1,6 @@
 const readline = require('readline-sync')
 const RandomWordGenerator = require('./RandomWordGenerator/index')
-const handleGuess = require('./word-handler/index')
+const handleGuess = require('./word-handler/handler')
 
 let guessed = [];
 let wordStatus = null;
