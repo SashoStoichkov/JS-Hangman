@@ -1,49 +1,49 @@
 body {
-    color: rgb(99, 100, 97);
-    border-style: inherit;
-    background-color: antiquewhite;
+  color: rgb(99, 100, 97);
+  border-style: inherit;
+  background-color: antiquewhite;
 }
 
 #multiplayer {
-    font-size: 30px;
-    width: 300px;
-    border-radius: 15px;
-    color: rgb(83, 8, 8);
-    background-color: #dcd3d3;
-    border-color: #010507;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-style: solid;
-    text-align: center;
-    margin: 0px;
-    margin-top: 300px;
-    margin-left: -200px;
-    position: fixed;
+  font-size: 30px;
+  width: 300px;
+  border-radius: 15px;
+  color: rgb(83, 8, 8);
+  background-color: #dcd3d3;
+  border-color: #010507;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-style: solid;
+  text-align: center;
+  margin: 0px;
+  margin-top: 300px;
+  margin-left: -200px;
+  position: fixed;
 }
 
 #singleplayer {
-    font-size: 30px;
-    width: 300px;
-    border-radius: 15px;
-    color: rgb(83, 8, 8);
-    background-color: #dcd3d3;
-    border-color: #010507;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-style: solid;
-    text-align: center;
-    margin: 0px;
-    margin-top: 200px;
-    margin-left: -200px;
-    position: fixed;
+  font-size: 30px;
+  width: 300px;
+  border-radius: 15px;
+  color: rgb(83, 8, 8);
+  background-color: #dcd3d3;
+  border-color: #010507;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-style: solid;
+  text-align: center;
+  margin: 0px;
+  margin-top: 200px;
+  margin-left: -200px;
+  position: fixed;
 }
 
 img {
-    width: auto;
-    height: auto;
-    position: fixed;
-    display: grid;
-    margin: 0px;
-    margin-top: 50px;
-    margin-left: 100px;
+  width: auto;
+  height: auto;
+  position: fixed;
+  display: grid;
+  margin: 0px;
+  margin-top: 50px;
+  margin-left: 100px;
 }
