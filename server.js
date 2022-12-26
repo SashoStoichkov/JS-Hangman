@@ -13,7 +13,7 @@ app.get("/", (req,res) => {
 })
 
 app.get('/singleplayer', (req,res) => {
-    res.send('SINGLEPLAYER GAME');
+    res.render('game')
 })
 app.get('/multiplayer', (req,res) => {
     res.send('MULTIPLAYER GAME');

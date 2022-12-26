@@ -1,8 +1,9 @@
-body{
-    color:rgb(99, 100, 97);
-    border-style:inherit;
+body {
+    color: rgb(99, 100, 97);
+    border-style: inherit;
     background-color: antiquewhite;
 }
+
 #multiplayer {
     font-size: 30px;
     width: 300px;
@@ -19,6 +20,7 @@ body{
     margin-left: -200px;
     position: fixed;
 }
+
 #singleplayer {
     font-size: 30px;
     width: 300px;

@@ -1,0 +1,152 @@
+body {
+  background-color: antiquewhite;
+  color: rgba(232, 211, 79, 0.985);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 160px;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 20px 0 0;
+  color: #1d7874;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: oblique;
+  font-size: 80px;
+  text-align: center;
+}
+
+.game-container {
+  padding: 20px 30px;
+  position: relative;
+  margin: auto;
+  height: 350px;
+  width: 450px;
+}
+
+.hangman-container {
+  fill: transparent;
+  stroke: #ff5e5b;
+  stroke-width: 4px;
+  margin: 0px;
+  margin-top: -70px;
+  margin-left: -400px;
+}
+
+.hangman-part {
+  display: none;
+}
+
+.wrong-letters-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 0px;
+  margin-right: -500px;
+  margin-top: -100px;
+  margin-bottom: 0px;
+  border-color: #1d7874;
+  border-style: double;
+}
+
+#wrong-letters p {
+  color: #ee2e31;
+  font-size: 35px;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+
+#wrong-letters span {
+  font-size: 30px;
+  margin-top: -50px;
+}
+
+.word {
+  display: flex;
+  position: absolute;
+  bottom: 70px;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.letter {
+  border-bottom: 5px solid #1d7874;
+  display: inline-flex;
+  font-size: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  height: 40px;
+  width: 20px;
+}
+
+.popup-container {
+  background-color: rgba(234, 234, 157, 0.654);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: #b3e6f5;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px 5px rgba(232, 211, 79, 0.985);
+  text-align: center;
+  font-size: 20px;
+}
+
+.popup button {
+  cursor: pointer;
+  background-color: rgb(212, 243, 251);
+  color: #29a6b9;
+  border-radius: 5px;
+  border-color: #29a6b9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.message-container {
+  background-color: #f76767;
+  border-radius: 20px 20px 20px 20px;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: -60px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.message-container p {
+  margin: 0;
+}
+
+#not-letter {
+  display: none;
+}
+
+#exist-letter {
+  display: none;
+}
+
+.message-container.show {
+  transform: translateY(-70px);
+}
