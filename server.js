@@ -1,6 +1,7 @@
 const ejs = require("ejs");
 const express = require("express");
 const path = require("path");
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(express.static("public"));
@@ -19,6 +20,6 @@ app.get("/multiplayer", (req, res) => {
   res.send("MULTIPLAYER GAME");
 });
 
-app.listen(8080, () => {
-  console.log("App running on port:8080");
+app.listen(PORT, () => {
+  console.log("App running on port: " + PORT);
 });
