@@ -42,11 +42,11 @@ h1 {
   display: none;
 }
 
-.wrong-letters-container {
+#wrong-letters-container {
   position: absolute;
   top: 20px;
   right: 30px;
-  display: flex;
+  display: none;
   flex-direction: column;
   text-align: center;
   margin-left: 0px;

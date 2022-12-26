@@ -17,6 +17,7 @@ const existLetter = document.getElementById("exist-letter");
 const notLetter = document.getElementById("not-letter");
 const finalMessage = document.getElementById("final-message");
 const hangmanParts = document.querySelectorAll(".hangman-part");
+const wrongLettersContainer = document.getElementById("wrong-letters-container");
 
 let selectedWord = "";
 const correctLetters = [];
@@ -44,6 +45,8 @@ function displayWord() {
 
 // wrong-letters conatiner --> every wrong guessed letter is displayed in the right side
 function updateWrongLetters() {
+  wrongLettersContainer.style.display = "flex";
+
   wrongLettersElement.innerHTML = `${
     wrongLetters.length > 0 ? "<p>Wrong letters</p>" : ""
   }${wrongLetters.map((letter) => `<span>${letter}</span>`)}`;
@@ -113,6 +116,7 @@ buttonPlayAgain.addEventListener("click", async () => {
     .then(() => displayWord());
 
   updateWrongLetters(); // for deleting hangman svg
+  wrongLettersContainer.style.display = "none";
 
   popup.style.display = "none";
 });
