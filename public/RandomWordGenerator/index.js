@@ -8,7 +8,7 @@ export class RandomWordGenerator {
       const response = await axios.get(this.url);
       return response.data[0];
     } catch (err) {
-      console.log("Something went wrong");
+      console.log("(WordGenerator) Something went wrong");
       throw err;
     }
   }
