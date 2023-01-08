@@ -1,11 +1,15 @@
 import { RandomWordGenerator } from "./RandomWordGenerator/index.js";
+// import { Translator } from "./Translator/index.js";
 
 const generator = new RandomWordGenerator();
+// const translator = new Translator();
 
 //generate random word
 async function randomWord() {
   let word = await generator.getRandomWord();
   return word;
+  // let translatedWord = await translator.translate(word, "en");
+  // return translatedWord;
 }
 
 const wordElement = document.getElementById("word");

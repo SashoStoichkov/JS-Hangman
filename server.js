@@ -2,8 +2,15 @@ const ejs = require("ejs");
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 8080;
+// const cors = require("cors");
 
 const app = express();
+// const corsOptions = {
+//   origin: "https://api-free.deepl.com/v2/translate",
+//   optionsSuccessStatus: 200,
+// };
+// app.use(cors(corsOptions));
+
 app.use(express.static("public"));
 
 app.set("view engine", "ejs");
