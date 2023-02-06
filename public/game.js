@@ -22,6 +22,7 @@ const notLetter = document.getElementById("not-letter");
 const finalMessage = document.getElementById("final-message");
 const hangmanParts = document.querySelectorAll(".hangman-part");
 const wrongLettersContainer = document.getElementById("wrong-letters-container");
+const capsLock = document.getElementById('caps-lock');
 
 let selectedWord = "";
 const correctLetters = [];
@@ -33,8 +34,7 @@ function displayWord() {
     .split("")
     .map(
       (letter) =>
-        `<span class="letter">${
-          correctLetters.indexOf(letter) >= 0 ? letter : ""
+        `<span class="letter">${correctLetters.indexOf(letter) >= 0 ? letter : ""
         }</span>`
     )
     .join("")}`;
@@ -51,9 +51,8 @@ function displayWord() {
 function updateWrongLetters() {
   wrongLettersContainer.style.display = "flex";
 
-  wrongLettersElement.innerHTML = `${
-    wrongLetters.length > 0 ? "<p>Wrong letters</p>" : ""
-  }${wrongLetters.map((letter) => `<span>${letter}</span>`)}`;
+  wrongLettersElement.innerHTML = `${wrongLetters.length > 0 ? "<p>Wrong letters</p>" : ""
+    }${wrongLetters.map((letter) => `<span>${letter}</span>`)}`;
 
   hangmanParts.forEach((part, index) => {
     const mistakes = wrongLetters.length;
@@ -81,34 +80,54 @@ function showMessage() {
 }
 
 window.addEventListener("keydown", (e) => {
-  if (e.keyCode >= 65 && e.keyCode <= 90) {
-    const letter = e.key;
+  if (e.keyCode === 20) { // if caps lock key is keydown do something...
+    if (e.getModifierState('CapsLock')) {
+      capsLock.textContent = 'The caps lock key is turned on';
+      notLetter.style.display = 'none';
+      existLetter.style.display = 'none';
+      capsLock.style.display = 'block';
+      showMessage();
+    } else {
+      capsLock.textContent = 'The caps lock key is turned off';
+      notLetter.style.display = 'none';
+      existLetter.style.display = 'none';
+      capsLock.style.display = 'block';
+      showMessage();
+    }
 
-    if (selectedWord.indexOf(letter) >= 0) {
-      if (correctLetters.indexOf(letter) === -1) {
-        correctLetters.push(letter);
+  } else {
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
+      const letter = e.key;
 
-        displayWord();
+      if (selectedWord.indexOf(letter) >= 0) {
+        if (correctLetters.indexOf(letter) === -1) {
+          correctLetters.push(letter);
+
+          displayWord();
+        } else {
+          notLetter.style.display = "none";
+          capsLock.style.display = 'none';
+          existLetter.style.display = "block";
+          showMessage();
+        }
       } else {
-        notLetter.style.display = "none";
-        existLetter.style.display = "block";
-        showMessage();
+        if (wrongLetters.indexOf(letter) === -1) {
+          wrongLetters.push(letter);
+
+          updateWrongLetters();
+        } else {
+          notLetter.style.display = "none";
+          capsLock.style.display = 'none';
+          existLetter.style.display = "block";
+          showMessage();
+        }
       }
     } else {
-      if (wrongLetters.indexOf(letter) === -1) {
-        wrongLetters.push(letter);
-
-        updateWrongLetters();
-      } else {
-        notLetter.style.display = "none";
-        existLetter.style.display = "block";
-        showMessage();
-      }
+      existLetter.style.display = "none";
+      capsLock.style.display = "none";
+      notLetter.style.display = "block";
+      showMessage();
     }
-  } else {
-    existLetter.style.display = "none";
-    notLetter.style.display = "block";
-    showMessage();
   }
 });
 
