@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hangman Game</title>
+</head>
+
+<body>
+    <link rel="stylesheet" type="text/css" href="css/multiplayer.css" />
+    <div id="initialScreen" class="multiplayerGame"> 
+      <h1>The Hangman Game</h1>
+        <button type="submit" id="newGameButton">Create New Game</button>
+      <p>OR</p>
+      <div class="form-group">
+        <input type="text" placeholder="Enter Game Room ID" id="gameRoomId"/>
+      </div>
+      <button type="submit" id="joinGameButton">Join Game</button>  
+    </div>
+    
+    <div id="gameScreen" class="multiplayerGame">
+    
+      <h2>Your game room id is: 
+        <span id="newGameRoomId"></span>
+      </h2>
+      <h2>Number of players in this room:
+        <span id="playersNum"></span>
+      </h2>  
+      <img src="logo.jpg" />
+      <button type = 'submit' id="playGame">Play</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="multiplayer.js" type="module"></script>
+</body>
+
+</html>
