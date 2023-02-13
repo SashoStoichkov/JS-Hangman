@@ -11,6 +11,10 @@ body {
     display: none;
 }
 
+#roomScreen {
+    display:none;
+}
+
 
 #newGameButton {
     color:blue;
@@ -82,17 +86,4 @@ p {
 img {
     margin-left: 550px;
     margin-top: 20px;
-}
-
-#playGame {
-    color:#d344c7;
-    font-size: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    margin-left: 670px;
-    margin-top: 30px;
-    border-style: solid;
-    border-radius: 15px;
-    transition-duration: 0.4s;
-    width:200px;
 }

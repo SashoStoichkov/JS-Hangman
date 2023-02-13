@@ -2,37 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Hangman Game</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hangman Game</title>
 </head>
 
 <body>
-    <link rel="stylesheet" type="text/css" href="css/multiplayer.css" />
-    <div id="initialScreen" class="multiplayerGame"> 
-      <h1>The Hangman Game</h1>
-        <button type="submit" id="newGameButton">Create New Game</button>
-      <p>OR</p>
-      <div class="form-group">
-        <input type="text" placeholder="Enter Game Room ID" id="gameRoomId"/>
-      </div>
-      <button type="submit" id="joinGameButton">Join Game</button>  
+  <link rel="stylesheet" type="text/css" href="css/multiplayer.css" />
+  <div id="initialScreen" class="multiplayerGame">
+    <h1>The Hangman Game</h1>
+    <button type="submit" id="newGameButton">Create New Game</button>
+    <p>OR</p>
+    <div class="form-group">
+      <input type="text" placeholder="Enter Game Room ID" id="gameRoomId" />
     </div>
-    
-    <div id="gameScreen" class="multiplayerGame">
-    
-      <h2>Your game room id is: 
-        <span id="newGameRoomId"></span>
-      </h2>
-      <h2>Number of players in this room:
-        <span id="playersNum"></span>
-      </h2>  
-      <img src="logo.jpg" />
-      <button type = 'submit' id="playGame">Play</button>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="multiplayer.js" type="module"></script>
+    <button type="submit" id="joinGameButton">Join Game</button>
+  </div>
+
+  <div id="roomScreen" class="multiplayerGame">
+
+    <h2>Your game room id is:
+      <span id="newGameRoomId"></span>
+    </h2>
+    <h2>Number of players in this room:
+      <span id="playersNum"></span>
+    </h2>
+    <img src="logo.jpg" />
+
+  </div>
+
+  <div id="gameScreen">
+    <link rel="stylesheet" type="text/css" href="css/game.css" />
+    <h1>The Hangman Game</h1>
+    <p>Enter a letter:</p>
+    <div class="game-container">
+      <svg height="900" width="1100" class="hangman-container">
+        <!-- gallows -->
+        <line x1="0" y1="300" x2="100" y2="300" class="hangman-part" />
+        <line x1="50" y1="-0" x2="50" y2="300" class="hangman-part" />
+        <line x1="50" y1="0" x2="180" y2="0" class="hangman-part" />
+        <line x1="180" y1="0" x2="180" y2="40" class="hangman-part" />
+
+        <!-- Head -->
+        <circle cx="180" cy="60" r="20" class="hangman-part" />
+        <!-- Body -->
+        <line x1="180" y1="80" x2="180" y2="160" class="hangman-part" />
+        <!-- Arms -->
+        <line x1="180" y1="120" x2="140" y2="100" class="hangman-part" />
+        <line x1="180" y1="120" x2="220" y2="100" class="hangman-part" />
+        <!-- Legs -->
+        <line x1="180" y1="160" x2="140" y2="210" class="hangman-part" />
+        <line x1="180" y1="160" x2="220" y2="210" class="hangman-part" />
+      </svg>
+
+      <div id="wrong-letters-container">
+        <div id="wrong-letters"></div>
+      </div>
+
+      <div class="word" id="word"></div>
+      <div id="correctWord"></div>
+      <div id="guessedLetters"></div>
+    </div>
+
+    <!-- Final message -->
+    <div class="popup-container" id="popup-container">
+      <div class="popup">
+        <h2 id="final-message"></h2>
+        <button id="play">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Message for already used letter -->
+    <div class="message-container" id="message-container">
+      <p id="exist-letter">You have already entered this letter</p>
+      <p id="not-letter">Please, eneter valid letter (a-z)</p>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer async src="multiplayer.js" type="module"></script>
 </body>
 
 </html>

@@ -33,6 +33,24 @@ app.get("/singleplayer", (req, res) => {
 
 let players = {};
 let playerRooms = {};
+let state = {};
+
+function emitGameStart(room) {
+  io.sockets.in(room).emit('gameStart');
+}
+
+function startGameInterval(roomName) {
+  const intervalId = setInterval (() => {
+    const winner = gameLoop(state[roomName]);
+    if(!winner){
+      emitGameState(roomName,state[roomName]);
+    } else {
+      emitGameOver(roomName, winner);
+      state[roomName]=null;
+      clearInterval(intervalId);
+    }
+  },1000);
+}
 
 io.on('connection', (socket) => {
   console.log('new player is connected');
@@ -52,12 +70,12 @@ io.on('connection', (socket) => {
   socket.on('joinGame', (roomName) => {
     //console.log(io.sockets.adapter.rooms);
     const room = io.sockets.adapter.rooms.get(roomName);
-    console.log(room);
+    // console.log(room);
 
     let numPlayers = 0;
     if(room !== undefined) {
       numPlayers=room.size;
-      console.log(numPlayers);
+      // console.log(numPlayers);
     } else {
       socket.emit('unknownRoom');
       return;
@@ -71,8 +89,12 @@ io.on('connection', (socket) => {
     playerRooms[socket.id]=roomName;
     socket.join(roomName);
     socket.number=2;
-    socket.emit('init', 2);
-    socket.emit('gameRoomId',roomName);
+    // socket.broadcast.emit('init', 2);
+    // socket.emit('init',2);
+     socket.emit('gameRoomId',roomName);
+   io.sockets.in(roomName).emit('init',2);
+   
+    emitGameStart(roomName);
   });
 
   socket.on('disconnect', () => {
