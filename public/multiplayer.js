@@ -3,7 +3,7 @@ const joinGameButton = document.getElementById('joinGameButton');
 const gameRoomInput = document.getElementById('gameRoomId');
 const roomScreen = document.getElementById('roomScreen');
 const initialScreen = document.getElementById('initialScreen');
-const gameRoomId=document.getElementById('newGameRoomId');
+const gameRoomId = document.getElementById('newGameRoomId');
 const playGameButton = document.getElementById('playGame');
 const playersNum = document.getElementById('playersNum');
 const gameScreen = document.getElementById('gameScreen');
@@ -19,19 +19,18 @@ import { RandomWordGenerator } from "./RandomWordGenerator/index.js";
 
 const generator = new RandomWordGenerator();
 
-  async function randomWord() {
-    let word = await generator.getRandomWord();
-    return word;
+async function randomWord() {
+  let word = await generator.getRandomWord();
+  return word;
 }
 
-let correctLetters=[];
+let correctLetters = [];
 function displayWord(selectedWord) {
   wordElement.innerHTML = `${selectedWord
     .split("")
     .map(
       (letter) =>
-        `<span class="letter">${
-          correctLetters.indexOf(letter) >= 0 ? letter : ""
+        `<span class="letter">${correctLetters.indexOf(letter) >= 0 ? letter : ""
         }</span>`
     )
     .join("")}`;
@@ -52,18 +51,18 @@ const init = () => {
 }
 
 const play = async () => {
-  initialScreen.style.display='none';
-  roomScreen.style.display='none';
-  gameScreen.style.display='block';
+  initialScreen.style.display = 'none';
+  roomScreen.style.display = 'none';
+  gameScreen.style.display = 'block';
   await randomWord().then((res) => correctWord.innerText = res);
 }
 
 const reset = () => {
-  gameRoomInput.value='';
-  playersNum.value='';
-  roomScreen.style.display='none';
-  gameScreen.style.display='none';
-  initialScreen.style.display='blcok';
+  gameRoomInput.value = '';
+  playersNum.value = '';
+  roomScreen.style.display = 'none';
+  gameScreen.style.display = 'none';
+  initialScreen.style.display = 'blcok';
 }
 
 
@@ -74,10 +73,9 @@ newGameButton.addEventListener('click', () => {
 
 joinGameButton.addEventListener('click', () => {
   const roomId = gameRoomInput.value;
-const selectedWord = correctWord.innerText;
-  socket.emit('joinGame',roomId,selectedWord);
+  socket.emit('joinGame', roomId);
   init();
-  
+
 })
 
 const handleInit = async (number) => {
@@ -100,16 +98,16 @@ const handleTooManyPlayers = () => {
   window.location.reload();
 }
 
-const handleGameStart =  async () => {
+const handleGameStart = async () => {
   let selectedWord = '';
-  await  play()
-  .then(() => selectedWord=correctWord.innerText)
-  .then(() => displayWord(selectedWord));
+  await play()
+    .then(() => selectedWord = correctWord.innerText)
+    .then(() => displayWord(selectedWord));
 }
 
 
 socket.on('init', handleInit);
 socket.on('gameRoomId', handleRoomId);
-socket.on('unknownRoom',handleUnknownRomm);
+socket.on('unknownRoom', handleUnknownRomm);
 socket.on('tooManyPlayers', handleTooManyPlayers);
-socket.on('gameStart',handleGameStart);
+socket.on('gameStart', handleGameStart);
