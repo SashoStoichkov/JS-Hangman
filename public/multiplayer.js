@@ -62,7 +62,7 @@ const reset = () => {
   playersNum.value = '';
   roomScreen.style.display = 'none';
   gameScreen.style.display = 'none';
-  initialScreen.style.display = 'blcok';
+  initialScreen.style.display = 'block';
 }
 
 
