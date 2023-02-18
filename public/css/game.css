@@ -139,6 +139,10 @@ h1 {
   margin: 0;
 }
 
+#caps-lock {
+  display:none;
+}
+
 #not-letter {
   display: none;
 }
