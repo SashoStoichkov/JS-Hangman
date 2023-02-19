@@ -10,6 +10,18 @@ const { all } = require("axios");
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
+
+const axios = require('axios');
+
+async function getRandomWord() {
+  try {
+    const response = await axios.get("https://random-word-api.herokuapp.com/word");
+    return response.data[0];
+  } catch (err) {
+    console.log("(WordGenerator) Something went wrong");
+    throw err;
+  }
+}
 // const corsOptions = {
 //   origin: "https://api-free.deepl.com/v2/translate",
 //   optionsSuccessStatus: 200,
@@ -29,9 +41,19 @@ let players = {};
 let playerRooms = {};
 let state = {};
 
-function emitGameStart(room) {
-  io.sockets.in(room).emit('gameStart');
+function emitGameStart(room,state) {
+  io.sockets.in(room).emit('gameStart',state);
 }
+
+function emitGameOver(room,winner) {
+
+}
+
+function  emitGameState(roomName,state){
+
+}
+
+const {initGame} = require('./public/hangman')
 
 function startGameInterval(roomName) {
   const intervalId = setInterval(() => {
@@ -58,7 +80,7 @@ io.on('connection', (socket) => {
     socket.emit('init', 1);
 
   })
-  socket.on('joinGame', (roomName) => {
+  socket.on('joinGame', async (roomName) => {
     //console.log(io.sockets.adapter.rooms);
     const room = io.sockets.adapter.rooms.get(roomName);
     // console.log(room);
@@ -82,9 +104,17 @@ io.on('connection', (socket) => {
     // socket.emit('init',2);
     socket.emit('gameRoomId', roomName);
     io.sockets.in(roomName).emit('init', 2);
-
-    emitGameStart(roomName);
+    let selectedWord = '';
+    await getRandomWord().then((res) => selectedWord = res)
+    .then(() => state[roomName] = initGame(selectedWord))
+    .then(() => emitGameStart(roomName,state[roomName]));
+    // state[roomName] = initGame();
+    // emitGameStart(roomName);
   });
+
+  socket.on('guess', () => {
+
+  })
 
   socket.on('disconnect', () => {
     console.log('a player is disconnected');

@@ -4,6 +4,10 @@ body {
   background-color: antiquewhite;
 }
 
+#selectedWord {
+  display:none
+}
+
 #multiplayer {
   font-size: 30px;
   width: 300px;
