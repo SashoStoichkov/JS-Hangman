@@ -99,10 +99,13 @@ const handleTooManyPlayers = () => {
 }
 
 const handleGameStart = async () => {
-  let selectedWord = '';
-  await play()
-    .then(() => selectedWord = correctWord.innerText)
-    .then(() => displayWord(selectedWord));
+  // let selectedWord = '';
+  // await play()
+  //   .then(() => selectedWord = correctWord.innerText)
+  //   .then(() => displayWord(selectedWord));
+
+  // redirect to "/singleplayer"
+  window.location.href = '/singleplayer';
 }
 
 

@@ -24,6 +24,8 @@ const hangmanParts = document.querySelectorAll(".hangman-part");
 const wrongLettersContainer = document.getElementById("wrong-letters-container");
 const capsLock = document.getElementById('caps-lock');
 
+let startTime = new Date();
+
 let selectedWord = "";
 const correctLetters = [];
 const wrongLetters = [];
@@ -42,7 +44,15 @@ function displayWord() {
   const word = wordElement.innerText.replace(/\n/g, "");
 
   if (word === selectedWord) {
-    finalMessage.innerText = "Congratulations! You won! 😃";
+    let endTime = new Date();
+    let timeDiff = endTime - startTime; //in ms
+    timeDiff /= 1000;
+
+    // get seconds
+    let seconds = Math.round(timeDiff);
+
+
+    finalMessage.innerText = `Congratulations! You won! 😃\n Your time is: ${seconds} seconds`;
     popup.style.display = "flex";
   }
 }
@@ -140,6 +150,7 @@ buttonPlayAgain.addEventListener("click", async () => {
 
   updateWrongLetters(); // for deleting hangman svg
   wrongLettersContainer.style.display = "none";
+  startTime = new Date();
 
   popup.style.display = "none";
 });
